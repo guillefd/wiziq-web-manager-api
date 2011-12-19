@@ -1,4 +1,4 @@
-<div class="row show-on-desktops">
+<div class="row">
     <div class="twelve columns">
             <p><h3>Mi Cuenta</h3></p><br />
             <dl class="nice tabs">
@@ -7,7 +7,7 @@
             </dl>
     </div>
 </div>
-<div class="row show-on-desktops">
+<div class="row">
     <div class="eight columns">
             <p>As an example, you'll only see this interface if you're on a desktop machine (something with a resolution higher than 768px wide, and not matching specific tablet resolutions). On a desktop we might make more use of columns for layout, as well as show more information for content.</p>
             <div class="row">

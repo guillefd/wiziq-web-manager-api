@@ -5,9 +5,9 @@
         </div>
     </div>
     
-    <div class="row show-on-desktops">
+    <div class="row">
                 <div class="four columns">
-                    <a href="<?=$base_url_page.'/agendar' ?>" class="nice large radius blue button">Agendar una Clase</a>
+                    <a href="<?=$base_url_page.'/agendar' ?>" class="nice large radius blue button">Nueva Clase</a>
                 </div>
                 <div class="four columns">
                     <a href="<?=$base_url_page.'/salas/hoy' ?>" class="nice large radius blue button">Clases de Hoy</a>

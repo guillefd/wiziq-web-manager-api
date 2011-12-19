@@ -1,10 +1,10 @@
-<div class="row show-on-desktops">
+<div class="row">
     <div class="twelve columns">
             <p><h3>Agendar una Clase</h3></p><br />
     </div>
 </div>
 
-<div class="row show-on-desktops">
+<div class="row">
     <div class="eight columns">
         <div class="panel">        
         <? include 'form-clase.php' ?>

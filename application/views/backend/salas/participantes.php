@@ -1,4 +1,4 @@
-<div class="row show-on-desktops">
+<div class="row">
     <div class="twelve columns">
                 <div class="panel">
         <div class="row">

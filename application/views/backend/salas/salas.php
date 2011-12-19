@@ -63,7 +63,7 @@ function CancelarClase(id){
 </script>
 
 
-<div class="row show-on-desktops">
+<div class="row">
     <div class="eight columns">
             <p><h3>Mis Clases</h3></p><br />
             <dl class="nice tabs">
