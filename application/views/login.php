@@ -7,7 +7,7 @@
     <div class="row">
             <div class="five columns centered">
                 <div class="panel">
-                    <h4 class="subheader">Login</h4>
+                    <h4 class="subheader">Admin Login</h4>
         <? $form_attributes = array('class'=>'nice custom', 'id'=>'form-login') ?>                    
         <?=form_open('login/validar',$form_attributes) ?>
 

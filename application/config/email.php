@@ -1,10 +1,14 @@
 <?php
 
-$config['useragent'] = 'isalas.com.ar'; //The "user agent".
-$config['protocol'] = 'mail';
+$config['useragent'] = 'isalas.com'; //The "user agent".
+$config['protocol'] = 'smtp';
 $config['mailpath'] = '/usr/sbin/sendmail/';
-$config['wordwrap'] = TRUE;
+$config['smtp_host'] = 'mail.isalas.com.ar';
+$config['smtp_user'] = 'system@isalas.com.ar';
+$config['smtp_pass'] = 'ism011013';
+$config['smtp_port'] = '2525';
 $config['smtp_timeout'] = '5';    //None    SMTP Timeout (in seconds).
+$config['wordwrap'] = TRUE;
 $config['wordwrap'] = TRUE;    //TRUE or FALSE (boolean)    Enable word-wrap.
 $config['wrapchars'] = '76';        //Character count to wrap at.
 $config['mailtype'] = 'html';    //text or html    Type of mail. If you send HTML email you must send it as a complete web page. Make sure you don't have any relative links or relative image paths otherwise they will not work.

@@ -30,13 +30,13 @@ class Isalas
         return $vec;
     }
     
-    public function ScheduleClass()
+    public function ScheduleClass($presenter_email)
     {
         $CI = & get_instance();                     
         $method = "create";
         $requestParameters["signature"]=$this->GenerateSignature($method,$requestParameters);
         #for teacher account pass parameter 'presenter_email'
-        $requestParameters["presenter_email"]=$CI->config->item('isalas_wiziq_presenter_email');
+        $requestParameters["presenter_email"] = $presenter_email;
         #for room based account pass parameters 'presenter_id', 'presenter_name'
         $requestParameters["presenter_id"] = "";
         $requestParameters["presenter_name"] = "";  
@@ -47,7 +47,7 @@ class Isalas
         $requestParameters["presenter_default_controls"]=$CI->input->post('audiovideo'); //opcional
         $requestParameters["attendee_limit"]=$CI->config->item('isalas_wiziq_attendee_limit'); //optional
         $requestParameters["control_category_id"]=""; //optional
-        $requestParameters["create_recording"]=""; //optional
+        $requestParameters["create_recording"]="true"; //optional
         $requestParameters["return_url"]=$CI->config->item('isalas_wiziq_return_url'); //optional
         $requestParameters["status_ping_url"]=""; //optional
         $requestParameters["language_culture_name"]=$CI->input->post('idioma');
@@ -64,7 +64,7 @@ class Isalas
         //Valores de retorno
         $requestParameters['method'] = $method;
         $requestParameters["timestamp"] = $timestamp;         
-        $requestParameters['descripcion'] = $CI->input->post('descripcion');  
+        $requestParameters['CKdescripcion'] = $CI->input->post('CKdescripcion');  
         if(!empty($XMLReturn))
         {           
                 try

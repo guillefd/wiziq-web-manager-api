@@ -63,12 +63,13 @@ function CancelarClase(id){
 </script>
 
 
-<div class="row">
-    <div class="eight columns">
+<div class="row show-on-desktops">
+    <div class="twelve columns">
             <p><h3>Mis Clases</h3></p><br />
             <dl class="nice tabs">
                 <dd><a href="<?=$base_url_page.'/salas/hoy' ?>"<? if($cat=='hoy'){ echo 'class="active"'; } ?>>Hoy</a></dd>
                 <dd><a href="<?=$base_url_page.'/salas/proximos' ?>"<? if($cat=='proximos'){ echo 'class="active"'; } ?>>Próximas</a></dd>                                
+                <dd><a href="<?=$base_url_page.'/salas/historial' ?>"<? if($cat=='historial'){ echo 'class="active"'; } ?>>Historial</a></dd> 
                 <? if($cat=='participantes'): ?>    
                 <dd><a class="active">Participantes</a></dd>
                 <? endif; ?>

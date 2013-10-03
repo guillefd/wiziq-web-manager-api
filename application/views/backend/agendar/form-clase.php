@@ -9,12 +9,14 @@ $(function(){
     $('#form-clase').submit(function(){
         //añade antes del SELECT el gif    
         $("#boton_submit").after('<img src="<?=$path ?>images/cargando_2.gif" style="float:left; margin:0px 0px 10px 5px;" id="loader" alt="" /></div>');                     
-        $("#boton_submit").hide();
-        $("#validbox").hide();        
+        $("#boton_submit").hide();  
+        var formData = $(this).serializeArray();
+        formData.push({ name: "CKdescripcion", value: CKEDITOR.instances.descripcion.getData() });            
         $.ajax({
             url: $(this).attr('action'),
             type: $(this).attr('method'),
-            data: $(this).serialize(),
+            //data: $(this).serialize() + '&CKdescripcion=' + CKEDITOR.instances.descripcion.getData(),
+            data: formData,
             success: function(result){
                 var obj_result = eval ("(" + result + ")");
                 switch(obj_result.etapa)
@@ -71,7 +73,7 @@ $('#horario').timepicker({
         timeOnlyTitle: 'Indique Hora de Inicio',
         timeText: 'Desde',
         stepHour: 1,
-	stepMinute: 1,
+	stepMinute: 10,
         hour: 6,
 	minute: 0,
 	hourMin: 0,    
@@ -85,9 +87,9 @@ $('#duracion').timepicker({
         timeText: 'Duración',
         hourMax: 5,
         minuteMax: 59,        
-	stepMinute: 1,
+	stepMinute: 10,
 	hour: 0,
-	minuteGrid: 15        
+	minuteGrid: 10        
         });    
 });
 
@@ -108,14 +110,21 @@ $('#duracion').timepicker({
 <?= form_input($data) ?>        
 
 <label>Descripción de la clase</label>
-<? $data = array('name'=>'descripcion','id'=>'descripcion','placeholder'=>'Descripcion','rows'=>'4','value'=>set_value('descripcion')); ?>
-<?= form_textarea($data) ?>         
+<? $data = array('name'=>'descripcion','class'=>'large input-text','id'=>'descripcion','placeholder'=>'Descripcion','rows'=>'10','value'=>set_value('descripcion')); ?>
+<?= form_textarea($data) ?>
+<script>
+    CKEDITOR.replace( 'descripcion' );
+</script>         
+<br>
+<div class="row">
+    <div class="twelve columns"> 
+        <label>Zona Horaria</label>
+        <select name="timezone" id="timezone">
+            <?=$timezones_select ?>
+        </select>
+    </div>        
+</div>
 
-    <label>Zona Horaria</label>
-    <select name="timezone" id="timezone">
-        <?=$timezones_select ?>
-    </select>
-    
 <div class="row">
     <div class="four columns">      
         <label>Fecha (mes/dia/año)</label> 

@@ -50,7 +50,7 @@ class Isalas_model extends CI_model
            'return_url'=>$request['return_url'],  
            'status_ping_url'=>$request['status_ping_url'],
            'language_culture_name'=>$request['language_culture_name'],
-           'descripcion'=>$request['descripcion'],       
+           'descripcion'=>$request['CKdescripcion'],       
            'attendee_list'=>$request['attendee_list'],            
 //           'session_id' => $this->session->userdata('session_id'),
 //           'session_ip_address' => $this->session->userdata('ip_address'),
@@ -103,8 +103,9 @@ class Isalas_model extends CI_model
                 'return_url'=>$request['return_url'],  
                 'status_ping_url'=>$request['status_ping_url'],
                 'language_culture_name'=>$request['language_culture_name'],
-                'descripcion'=>$request['descripcion'],             
+                'descripcion'=>$request['CKdescripcion'],             
                 'class_id'=>$response['class_id'],
+                'user_id'=>$_SESSION['isalas_user_id'],
                 'presenter_email'=>$response['presenter_email'],            
                 'recording_url'=>$response['recording_url'],
                 'presenter_url'=>$response['presenter_url'],
@@ -114,6 +115,16 @@ class Isalas_model extends CI_model
             $this->db->insert($this->salas,$datos); 
             return mysql_insert_id();                      
     }
+
+    function updateSala($id, $titulo, $descripcion)
+    {
+        $data = array(
+                      'titulo'=>$titulo,            
+                      'descripcion'=>$descripcion,
+            );
+        $this->db->where('class_id',$id);
+        $this->db->update($this->salas,$data);  
+    }    
 
     function insert_attendee($attendee)
     {
@@ -143,9 +154,11 @@ class Isalas_model extends CI_model
       
     function salas_hoy()
     {
+        //echo $_SESSION['isalas_user']; exit();
         $this->db->from($this->salas);
         $this->db->where('fecha', date('Y-m-d'));
         $this->db->where('status', 'ok');
+        $this->db->where('user_id',$_SESSION['isalas_user_id']);
         $q = $this->db->get();        
         if($q->num_rows()>0)
         {
@@ -165,7 +178,8 @@ class Isalas_model extends CI_model
     {
         $this->db->from($this->salas);
         $this->db->where('fecha >', date('Y-m-d'));
-        $this->db->where('status', 'ok');        
+        $this->db->where('status', 'ok'); 
+        $this->db->where('user_id',$_SESSION['isalas_user_id']);               
         $q = $this->db->get();        
         if($q->num_rows()>0)
         {
@@ -180,6 +194,27 @@ class Isalas_model extends CI_model
             }
         return $data;            
     }
+
+    function salas_historial()
+    {
+        $this->db->from($this->salas);
+        // $this->db->where('fecha <', date('Y-m-d'));
+        $this->db->where('status', 'ok'); 
+        $this->db->where('user_id',$_SESSION['isalas_user_id']);               
+        $q = $this->db->get();        
+        if($q->num_rows()>0)
+        {
+            foreach ($q->result() as $row)
+            {
+                $data[] = $row;
+            }    
+        }
+        else
+            {
+                $data=array();
+            }
+        return $data;            
+    }    
     
 
     function consulta_participantes($class_id)
@@ -201,10 +236,25 @@ class Isalas_model extends CI_model
         return $data;            
     }  
 
-    // CONSULTA sala x ID
+    // CONSULTA attendee x email
     function getAttendeeId($class_id,$email) 
     {
         $q = $this->db->get_where($this->attendees,array('class_id'=>$class_id,'email'=>$email));
+        if($q->num_rows()>0)
+        {
+            $data = $q->row();
+        }
+        else
+            {
+                $data=FALSE;
+            }
+        return $data;            
+    }     
+
+    // CONSULTA attendee x ID
+    function getAttendeeBYId($id) 
+    {
+        $q = $this->db->get_where($this->attendees,array('id_attendee'=>$id));
         if($q->num_rows()>0)
         {
             $data = $q->row();

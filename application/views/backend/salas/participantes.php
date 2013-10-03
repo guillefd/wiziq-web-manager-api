@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row show-on-desktops">
     <div class="twelve columns">
                 <div class="panel">
         <div class="row">
@@ -22,8 +22,7 @@
         <table>
             <thead>
                 <tr>
-                    <th><?=$result->titulo ?></th>
-                    <th></th>
+                    <th colspan="2"><?=$result->titulo ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -49,7 +48,12 @@
         <?=form_open('admin/add_participantes/'.$result->class_id,$form_attributes) ?>
 
         <? $data = array('name'=>'lista','id'=>'lista','class'=>'large input-text','value'=>$list_post,'placeholder'=>'email, nombre,'); ?>
-        <label>Lista de Participantes</label>
+        <label><strong>Lista de Participantes</strong></label>
+        <p> Importante: escribir 1 participante por linea, formato: email<strong>[coma]</strong>nombre<strong>[coma]</strong><br>
+            Ejemplo: <br>
+            juanperez@email.com<span style="font-weight:bold;color:red;font-size:1.8em">,</span>Juan Perez<span style="font-weight:bold;color:red;font-size:1.8em">,</span><br>
+            albertolopez@email.com<span style="font-weight:bold;color:red;font-size:1.8em">,</span>Alberto Lopez<span style="font-weight:bold;color:red;font-size:1.8em">,</span>
+        </p>    
         <?= form_textarea($data) ?> 
         <a href="<?=$base_url_page.'/salas/view/'.$result->class_id ?>" class="nice small radius red button">Cancelar</a> 
         <input type="submit" id="boton_submit" class="nice small radius blue button" value="<?=$valueSubmit ?>Participantes" >                      

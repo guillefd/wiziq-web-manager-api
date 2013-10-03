@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row show-on-desktops">
     <div class="twelve columns">
                 <div class="panel">
         <div class="row">
@@ -17,13 +17,13 @@
                 </div>
             <? endif ?>          
          </div>	                     
-                    <h4 class="subheader">Enviar invitaciones a Participantes</h4>
+                    <h4>Enviar invitaciones a Participantes</h4>
+                    <p>Verifique la lista de participantes y confirme el envio presionando en "Enviar invitaciones".</p>
 
         <table>
             <thead>
                 <tr>
-                    <th><?=$result->titulo ?></th>
-                    <th></th>
+                    <th colspan="2"><?=$result->titulo ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -41,22 +41,54 @@
                 <tr>
                     <td>Duracion</td>
                     <td><?=$result->duracion ?> minutos</td>                  
-                </tr>                
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div align="center">
+                        <? if(!empty($list_post)):?>
+                            <a href="<?=base_url().'admin/send_invitaciones/'.$result->class_id ?>" class="nice radius blue button">Enviar todas las invitaciones</a>
+                        <? else: ?>
+                            <a href="<?=base_url().'admin/salas/participantes/'.$result->class_id ?>" class="nice radius white button">Agregar Participantes</a>        
+                        <? endif ?>                         
+                        </div>
+                    </td>
+                </tr>                  
+                <tr>
+                	<td><strong>Lista Participantes</strong></td><td></td>
+                    <!--<td><textarea cols="50" rows="5" disabled="disabled"><?=$list_post ?></textarea></td>-->
+                </tr>
+                <tr>    
+                    <td colspan="2">
+                        <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Clave</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             <? foreach($participantes as $r): ?>
+                             <tr>
+                                <td><?=$r->nombre ?></td>   
+                                <td><?=$r->email ?></td>
+                                <td><?=$r->loginpw ?></td>
+                                <td><a href="<?=base_url().'admin/send_invitacion_id/'.$result->class_id.'/'.$r->id_attendee ?>" class="nice small radius green button">Enviar</a></td>
+                             <? endforeach ?>
+                        </tbody>     
+                        </table>        
+                    </td>
+                </tr>              
             </tbody>    
-        </table>                    
-                                     
-        <?=form_open() ?>
+        </table>                         
+        <? //=form_open() ?>
 
-        <? $data = array('name'=>'lista','id'=>'lista','class'=>'large input-text','value'=>$list_post, 'disabled'=>'disabled','placeholder'=>'email, nombre,'); ?>
+<!--        <? //$data = array('name'=>'lista','id'=>'lista','class'=>'large input-text','value'=>$list_post, 'disabled'=>'disabled','placeholder'=>'email, nombre,'); ?>
         <label>Lista de Participantes</label>
-        <?= form_textarea($data) ?> 
-        <a href="<?=$base_url_page.'/salas/view/'.$result->class_id ?>" class="nice small radius red button">Cancelar</a> 
-        
-        <? if(!empty($list_post)):?>
-            <a href="<?=base_url().'admin/send_invitaciones/'.$result->class_id ?>" class="nice small radius blue button">Enviar invitaciones</a>
-        <? else: ?>
-            <a href="<?=base_url().'admin/salas/participantes/'.$result->class_id ?>" class="nice small radius white button">Agregar Participantes</a>        
-        <? endif ?>   
+        <? //= form_textarea($data) ?> 
+-->          
+        <a href="<?=$base_url_page.'/salas/view/'.$result->class_id ?>" class="nice small radius red button">Volver</a> 
         <? form_close() ?>
                 </div>              
     </div>

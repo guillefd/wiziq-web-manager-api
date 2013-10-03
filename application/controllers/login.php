@@ -34,7 +34,7 @@ class Login extends CI_Controller {
    
    public function index()
    {
-        if(isset($_SESSION['isalas_logged']) && $_SESSION['isalas_logged']=="true"){ redirect('admin'); } 
+        if(isset($_SESSION['isalas_logged']) && $_SESSION['isalas_rol']>1){ redirect('admin'); } 
         $data[]='';
         //inicia template
         $tpl = init_tmpl($this->page_name);
@@ -63,6 +63,8 @@ class Login extends CI_Controller {
                         //valida ADMIN
                         $_SESSION['isalas_rol']=5;
                         $_SESSION['isalas_user']=$result->nombreusuario;
+                        $_SESSION['isalas_user_id']=$result->user_id;
+                        $_SESSION['isalas_name']=$result->nombre;						
                         $_SESSION['isalas_logged']="true";
                         redirect('admin');
                     }else
@@ -81,9 +83,28 @@ class Login extends CI_Controller {
    public function logout()
    {
        //$this->session->sess_destroy();
+       $_SESSION = array();
        session_destroy();
        redirect('login');
    }
+
+
+    /**
+    * Index Page for this controller.
+    */
+    public function account()
+    {
+      $this->load->model('login_model'); 
+      $this->load->model('isalas_model');            
+      $data['account']= $this->login_model->getUserById($_SESSION['isalas_user_id']);
+      $data['account']->salas_agendadas = $this->isalas_model->salas_historial();
+      //inicia template
+      $tpl = init_tmpl('admin');
+      $meta = $this->_init_meta();  
+      $tpl = array_merge($tpl,$meta);
+      $view = 'account';
+      load_view($tpl, $data, $view);    
+    }
 
 }
 

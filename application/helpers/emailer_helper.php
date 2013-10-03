@@ -1,6 +1,6 @@
 <?php
 
-function email_template($tpl,$nombre,$titulo,$fecha,$horario,$url,$clave)
+function email_template($tpl,$nombre,$titulo,$descripcion,$fecha,$horario,$url,$clave,$timezone)
 {
     $CI =& get_instance();  
     switch($tpl)
@@ -8,7 +8,7 @@ function email_template($tpl,$nombre,$titulo,$fecha,$horario,$url,$clave)
         case 'invitacion':
                             $template = '<html><head>
                                         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                                        <title>Invitación a Sala Virtual</title>
+                                        <title>Invitación a Sala Virtual</title>                                                                         
                                         </head>
                                         <body>
                                         <table width="80%" border="0" cellspacing="5" cellpadding="15" style="font-family:Lucida Sans Unicode,Lucida Grande,sans-serif">
@@ -24,12 +24,52 @@ function email_template($tpl,$nombre,$titulo,$fecha,$horario,$url,$clave)
                                                 <p>
                                                 	Titulo: '.$titulo.'<br>
                                                     Fecha: '.$fecha.'<br>
-                                                    Horario: '.$horario.'                                                    
+                                                    Horario: '.$horario.' (Zona horaria: '.$timezone.' )<br>
+                                                    <p>
+													'.$descripcion.'                                                     
+                                                    </p>
+                                                </p>
+                                                <hr>
+                                                <p><strong>Importante:</strong>
+                                                <br />Record&aacute;&nbsp;utilizar los datos de acceso que correspondan al horario de participaci&oacute;n.</p><p><strong>Recomendaciones t&eacute;cnicas:</strong><br />Por favor lee detenidamente&nbsp;las&nbsp;recomendaciones y requisitos t&eacute;cnicos previo al ingreso a la sala, para que evites cualquier inconveniente durante la sesi&oacute;n.</p>                                            
+                                                <p>
+                                                <strong>Requisitos para participar de la sala virtual:</strong><br>
+                                                - Navegador de Internet (Browser): Firefox actualizado ó Internet Explorer 8+<br>
+                                                - PC / Notebook o similar con sistema operativo Windows o Mac.<br>
+                                                - Conexión a internet de banda ancha.<br>
+                                                - Auriculares o headset para escuchar el audio.<br>
+                                                - Micrófono (solo es requisito si va a hablar durante la sesión).<br>
+                                                </p>
+                                                <p>
+                                                <strong>Comprueba tu Sistema</strong><br>                                                
+                                                Por favor accedé al siguiente link para comprobar que su sistema cumple con todos los requisitos.<br>
+                                                <p align="center"> <a href="http://meeting.isalas.com.ar/test/" style="background: #62656e; color: white; display: inline-block; width: auto; text-align: center;text-decoration:none;border:10px solid #62656e;">Click aquí para comprobar su sistema</a></p> 
+                                                ( o copiá y pegá el siguiente link en tu navegador: http://meeting.isalas.com.ar/test )
+                                                </p>
+                                                <p>
+                                                    <strong>Guía de Resolución de Problemas</strong><br>
+                                                    Si experimentas problemas durante la sesión, visita la<br>
+                                                    <p align="center"> <a href="http://meeting.isalas.com.ar/check/" style="background: #62656e; color: white; display: inline-block; width: auto; text-align: center;text-decoration:none;border:5px solid #62656e;">Guia de Resolucíón de Problemas</a></p> 
+                                                    <a href="http://meeting.isalas.com.ar/check/" target="_blank">Guia de Resolucíón de Problemas</a>.
+                                                </p>
+                                                <p>
+                                                <hr>
+                                                </p>
+                                                <p>
+                                                    <strong>ACCEDER A LA SALA VIRTUAL | Tus datos de acceso</strong>
                                                 </p>
 												<p>
 													Tu clave de acceso: <strong>'.$clave.'</strong>
 												</p>                         
-                                                <p><a href="'.$url.'" >Click aquí para ingresar a la Sala Virtual</a></p>                       
+                                                <p align="center"> <a href="'.$url.'" style="background: #154cda; color: white; display: inline-block; width: auto; text-align: center;text-decoration:none;border:10px solid #154cda;">Ingresar a la Sala Virtual</a></p>            
+                                                Si el link no funciona, por favor copiá y pegá la siguiente dirección en tu navegador:<br>
+                                                '.$url.'  
+                                                <p>
+                                                <hr>
+                                                </p>
+                                                <p>
+                                                El equipo de iSalas.
+                                                </p>                      
                                           </td>
                                           </tr>                                          
                                           <tr style="background-color:#ededed; font-size:0.8em; text-align:center;color:#069">
@@ -52,10 +92,10 @@ function gen_email_params($motivo,$reg)
     {
         case 'invitacion': 
                                 $r['destinatario'] = $reg['email']; 
-                                $r['asunto'] = 'Invitación para participar de una Sala Virtual';
-                                $r['mensaje'] = email_template($motivo,$reg['nombre'],$reg['titulo'],$reg['fecha'],$reg['horario'],$reg['url'],$reg['clave']);
+                                $r['asunto'] = 'Invitación para participar de una Sala Virtual - '.$reg['titulo'];
+                                $r['mensaje'] = email_template($motivo,$reg['nombre'],$reg['titulo'],$reg['descripcion'],$reg['fecha'],$reg['horario'],$reg['url'],$reg['clave'],$reg['timezone']);
                                 $r['from'] = $CI->config->item('isalas_system_email');
-                                $r['from_name'] = $CI->config->item('isalas_publisher_name'); 
+                                $r['from_name'] = $_SESSION['isalas_name']; //$CI->config->item('isalas_publisher_name'); 
                                 break;                                                        
     }
     
@@ -73,17 +113,6 @@ function enviar_email($r)
     return $CI->email->send();
 }
 
-function init_email()
-{
-    $CI =& get_instance();
-    $CI->load->library('email'); 
-    $config['smtp_host'] = $CI->config->item('lp_smtp_host');
-    $config['smtp_user'] = $CI->config->item('lp_smtp_user');
-    $config['smtp_pass'] = $CI->config->item('lp_smtp_pass');
-    $config['smtp_port'] = $CI->config->item('lp_smtp_port');  
-    $CI->email->initialize($config);
-    
-}
 
 /* End of file XXX.php */
 /* Location: ./application/controllers/XXX.php */

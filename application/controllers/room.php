@@ -31,6 +31,8 @@ class Room extends CI_Controller {
             case 'validar': call_user_func_array(array($this, $method), $params);
                          break;                       
             case 'logout': call_user_func_array(array($this, $method), $params);
+                         break; 
+            case 'error': call_user_func_array(array($this, $method), $params);
                          break;                        
                      
             default: redirect('/404');                      
@@ -115,8 +117,8 @@ class Room extends CI_Controller {
             redirect('room/login/'.$id);
         }            
         if(isset($_SESSION['isalas_class_id']))
-        {
-            $data[]='';
+        {            
+            $data['class_id']=$id;
             $this->load->view('room/participar',$data);
         }else if(!empty($id))
             {
@@ -130,18 +132,33 @@ class Room extends CI_Controller {
         
     }
 
-   public function login($id=NULL)
+   public function login($id="")
    {
         if(isset($_SESSION['isalas_logged']) && $_SESSION['isalas_rol']>=1 && isset($_SESSION['isalas_id_attendee']))
         { 
             redirect('room/participar/'.$id);         
         } 
+        if($id=="")
+        { 
+            $_SESSION['login_msg']='Por favor, para acceder a la Sala Virtual,<br> ingrese desde la invitación enviada por correo<br> y haga un clic en el LINK o VINCULO provisto.';
+            redirect('room/error');         
+        }         
         $data['class_id']=$id;
         //inicia template
         $tpl = init_tmpl($this->page_name);
         $meta = $this->_init_meta();  
         $tpl = array_merge($tpl,$meta);
         $view = 'room/login';
+        load_view($tpl, $data, $view);  
+   } 
+   
+   public function error()
+   {     
+        //inicia template
+        $tpl = init_tmpl($this->page_name);
+        $meta = $this->_init_meta();  
+        $tpl = array_merge($tpl,$meta);
+        $view = 'room/error';
         load_view($tpl, $data, $view);  
    }   
 

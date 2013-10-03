@@ -19,7 +19,7 @@ z-index:-1;
   <p>Your browser does not support iframes.</p>
 </iframe>
 <div align="center" style="position:fixed;top:620px;left:0px;z-index:10000;width:100%;height:100px;background-color:#CCC">
-    <img src="<?=base_url() ?>template/foundation/images/logoclass.png" style="margin-top:5px" /><span style="position:absolute;top:5px; padding:4px;font-family:Tahoma, Geneva, sans-serif;color:#666; font-size:0.8em;"> iSalas :: Powered by EyT :: 2011 </span>
+    <img src="<?=base_url() ?>template/foundation/images/logoclass.png" style="margin-top:5px" /><span style="position:absolute;top:5px; padding:4px;font-family:Tahoma, Geneva, sans-serif;color:#666; font-size:0.8em;"> iSalas :: Powered by EyT :: 2013 </span>
 </div>
 </body>
 

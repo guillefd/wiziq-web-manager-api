@@ -8,7 +8,7 @@
             <div class="eight columns centered">
                 <div class="panel">
                     <h4 class="subheader">Bienvenido a la Sala Virtual</h4>
-                     <table>
+                            <table>
                                 <thead>
                                     <tr>
                                         <th colspan="2"><h5><?=$infoSala->titulo ?></h5></th>                    
@@ -37,8 +37,21 @@
                                     </tr>                
                                 </tbody>    
                             </table>
+                            <p>
+                               <strong>Requisitos para participar de la sala virtual:</strong><br>
+                                       - PC / Notebook o similar con sistema operativo Windows o Mac.<br>
+                                       - Conexión a internet de banda ancha.<br>
+                                       - Parlantes o auriculares (recomendado).<br>
+                                       - Micrófono (solo es requisito si va a hablar durante la sesión).<br>
+                            </p>
+                            <p>Por favor acceda al siguiente link para comprobar que su sistema cumple con todos los requisitos.<br>
+                               <div align="center"><a href="http://meeting.isalas.com.ar/test/" target="_blank" class="nice small white radius button">Click aquí para comprobar su sistema</a></div>
+                            </p>
+                            <p>
+                               <div align="center"><a href="http://meeting.isalas.com.ar/check/" target="_blank" class="nice small white radius button">Ver la Guía de Resolución de Problemas</a></div>
+                            </p>                            
                     <div align="center"><a href="<?=base_url().'room/participar/'.$infoSala->class_id ?>" target="_blank" class="nice large radius blue button">Ingresar a la Sala Virtual</a></div>
-                    
+                    &nbsp;                                        
                 </div>			
             </div>
     </div>  

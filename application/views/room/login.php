@@ -29,7 +29,7 @@
         <div class="five columns centered"> 
             <?=validation_errors() ?>
             <? if(isset($_SESSION['login_msg']) && $_SESSION['login_msg']): ?>
-                <div class="alert-box error">
+                <div class="alert-box warning">
                     <?=$_SESSION['login_msg']; 
                        unset($_SESSION['login_msg']); ?>
                 </div>

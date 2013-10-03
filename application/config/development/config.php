@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url'] = 'http://localhost/isalas_CI/';
+$config['base_url'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -266,7 +266,7 @@ $config['sess_time_to_update']	= 300;
 |
 */
 $config['cookie_prefix']	= "isalas_";
-$config['cookie_domain']	= "127.0.0.1";
+$config['cookie_domain']	= "meeting.isalas.com.ar";
 $config['cookie_path']		= "/";
 $config['cookie_secure']	= FALSE;
 

@@ -34,11 +34,15 @@ if (defined('ENVIRONMENT'))
 	{
 		case 'development':
 			error_reporting(E_ALL);
+			//error_reporting(E_ERROR);
 		break;
 	
 		case 'testing':
+			//error_reporting(E_ALL);
+			error_reporting(E_ERROR);
+		break;
 		case 'production':
-			error_reporting(0);
+			  error_reporting(0);
 		break;
 
 		default:

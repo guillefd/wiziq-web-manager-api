@@ -39,7 +39,9 @@
 <? foreach ($custom_js as $value): ?>
 <script type="text/javascript" src="<?=tpl_url().$value.'.js' ?>"></script>
 <? endforeach; ?>  
-  
+
+<!-- CKEDITOR -->  
+<script src="<?=tpl_url() ?>ckeditor/ckeditor.js"></script>
   
   <script>
   $(window).load(function() {

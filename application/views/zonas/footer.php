@@ -8,7 +8,7 @@
 	    
 	    <section class="three columns">
 	      <h6><strong>Contacto</strong></h6>
-	      <p><a href="mailto:info@eytech.com.ar?subject=Consulta desde iSalas">info@eytech.com.ar</a></p>
+	      <p><a href="mailto:support@isalas.com.ar?subject=Consulta desde iSalas">support@isalas.com.ar</a></p>
 	    </section>
 	    
 <!--	    <section class="four columns">     
