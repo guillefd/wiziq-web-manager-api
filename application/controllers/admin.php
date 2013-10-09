@@ -111,7 +111,7 @@ class Admin extends CI_Controller {
     public function agendar()
     {
         $this->load->model('login_model');
-        $creditos = $this->login_model->consulta_creditos($_SESSION['isalas_user_id']);
+        $creditos = $this->_get_creditos_disponibles();
         if($creditos>=1)
         {
             $this->load->helper('formoptions');
@@ -567,6 +567,14 @@ class Admin extends CI_Controller {
         {      
             $this->isalas_model->delete_attendee($lista[$i],$class_id);
         }      
+    }
+
+    public function _get_creditos_disponibles()
+    {
+      $account = $this->login_model->getUserById($_SESSION['isalas_user_id']);
+      $account->salas_agendadas = $this->isalas_model->salas_historial();  
+      $creditos = intval($account->creditos) - count($account->salas_agendadas);    
+      return $creditos;
     }    
     
 }
