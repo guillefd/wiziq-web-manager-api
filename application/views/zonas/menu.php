@@ -1,10 +1,10 @@
   <!-- ZURBar -->
   <div id="zurBar" class="container">
     <div class="row">
-      <div class="four columns">        
+      <div class="two columns">        
         <h1><a><img src="<?php echo $path ?>images/isala-logo.png" /></a></h1>
       </div>
-      <div class="eight columns hide-on-phones" id="menu_header">
+      <div class="ten columns hide-on-phones" id="menu_header">
       	<strong class="right">
                 <?php if(isset($_SESSION['isalas_rol']) && $_SESSION['isalas_rol']==5): ?>
 	                <a href="<?php echo $base_url_page.'/' ?>">Inicio</a>      
@@ -14,6 +14,9 @@
                     <a href="<?php echo $base_url_page.'/salas' ?>">Mis Clases</a>
                     <a href="<?php echo $base_url_page.'/salas/historial' ?>">Historial</a>                    
                     <a href="login/account">Hola, <span style="color: #ff0"><?php echo $_SESSION['isalas_name'] ?></span></a>               
+                    <!-- Validar rol admin antes de mostrar boton -->
+                    <a href="<?php echo base_url().'manage' ?> " class="small nice button">Administracion</a>
+
                     <a href="<?php echo base_url().'login/account' ?> " class="small nice button">Mi cuenta</a>
                     <a href="<?php echo base_url().'login/logout' ?> " class="small red nice button">Salir</a>
                 <?php endif ?>

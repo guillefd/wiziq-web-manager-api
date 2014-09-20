@@ -13,6 +13,12 @@
                     <?php echo $_SESSION['sys_msg']; 
                        unset($_SESSION['sys_msg']); ?>
                 </div>
+            <?php endif ?>
+            <?php if($this->session->flashdata('message')): ?>
+            <br>
+                <div class="alert-box error">
+                 <?php echo $this->session->flashdata('message'); ?>
+                </div>
             <?php endif ?>  
         </div>
     <div class="row show-on-desktops">        

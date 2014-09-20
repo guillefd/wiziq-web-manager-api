@@ -96,6 +96,8 @@ class Admin extends CI_Controller {
      */
     public function index()
     {
+        var_dump($this->session->all_userdata());
+        var_dump($this->session->flashdata('message'));
         $data[]='';
         //inicia template
         $tpl = init_tmpl('admin');
