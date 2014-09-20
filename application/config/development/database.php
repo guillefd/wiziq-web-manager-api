@@ -50,7 +50,7 @@ $active_record = TRUE;
 
 $db['isalas']['hostname'] = 'localhost';
 $db['isalas']['username'] = 'root';
-$db['isalas']['password'] = '12345';
+$db['isalas']['password'] = '';
 $db['isalas']['database'] = 'isalas';
 $db['isalas']['dbdriver'] = 'mysql';
 $db['isalas']['dbprefix'] = '';
