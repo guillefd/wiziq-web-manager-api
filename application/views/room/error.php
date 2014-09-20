@@ -15,13 +15,13 @@
     </div>
     <div class="row">
         <div class="five columns centered"> 
-            <?=validation_errors() ?>
-            <? if(isset($_SESSION['login_msg']) && $_SESSION['login_msg']): ?>
+            <?php echo validation_errors() ?>
+            <?php if(isset($_SESSION['login_msg']) && $_SESSION['login_msg']): ?>
                 <div class="alert-box warning">
-                    <?=$_SESSION['login_msg']; 
+                    <?php echo $_SESSION['login_msg']; 
                        unset($_SESSION['login_msg']); ?>
                 </div>
-            <? endif ?>
+            <?php endif ?>
         </div>
     </div>    
 

@@ -7,23 +7,23 @@
     
     <div class="row show-on-desktops">
         <div class="twelve columns">
-             <? if(isset($_SESSION['sys_msg']) && $_SESSION['sys_msg']): ?>
+             <?php if(isset($_SESSION['sys_msg']) && $_SESSION['sys_msg']): ?>
             <br>
                 <div class="alert-box error">
-                    <?=$_SESSION['sys_msg']; 
+                    <?php echo $_SESSION['sys_msg']; 
                        unset($_SESSION['sys_msg']); ?>
                 </div>
-            <? endif ?>  
+            <?php endif ?>  
         </div>
     <div class="row show-on-desktops">        
             <div class="four columns">
-                <a href="<?=$base_url_page.'/agendar' ?>" class="nice large radius white button">Agendar una Clase</a>
+                <a href="<?php echo $base_url_page.'/agendar' ?>" class="nice large radius white button">Agendar una Clase</a>
             </div>
             <div class="four columns">
-                <a href="<?=$base_url_page.'/salas/hoy' ?>" class="nice large radius blue button">Clases de Hoy</a>
+                <a href="<?php echo $base_url_page.'/salas/hoy' ?>" class="nice large radius blue button">Clases de Hoy</a>
             </div>
             <div class="four columns">
-                <a href="<?=$base_url_page.'/salas/proximos' ?>" class="nice large radius white button">Proximas Clases </a>
+                <a href="<?php echo $base_url_page.'/salas/proximos' ?>" class="nice large radius white button">Proximas Clases </a>
             </div>  
     </div>  
     </div>

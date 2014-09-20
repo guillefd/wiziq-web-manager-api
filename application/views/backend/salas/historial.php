@@ -1,4 +1,4 @@
-<? include 'tabla_historial.php' ?>
+<?php include 'tabla_historial.php'; ?>
 
 
 

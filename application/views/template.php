@@ -1,7 +1,7 @@
-<?=$z_header ?>
-<?=$z_menu ?>
-<?=$z_content ?>
-<?=$z_footer ?>      
+<?php echo $z_header ?>
+<?php echo $z_menu ?>
+<?php echo $z_content ?>
+<?php echo $z_footer ?>      
 
 <?php
 

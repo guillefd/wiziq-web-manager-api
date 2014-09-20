@@ -29,7 +29,7 @@ function CancelarClase(id){
         $("#btn_reveal_cerrar").hide();           
         $("#btnAceptar").hide();         
         $.ajax({
-            url: '<?=base_url()."admin/cancelar_sala_ajax" ?>',
+            url: '<?php echo base_url()."admin/cancelar_sala_ajax" ?>',
             type: 'POST',
             data: 'idSala='+id,
             success: function(result){
@@ -67,21 +67,21 @@ function CancelarClase(id){
     <div class="twelve columns">
             <p><h3>Mis Clases</h3></p><br />
             <dl class="nice tabs">
-                <dd><a href="<?=$base_url_page.'/salas/hoy' ?>"<? if($cat=='hoy'){ echo 'class="active"'; } ?>>Hoy</a></dd>
-                <dd><a href="<?=$base_url_page.'/salas/proximos' ?>"<? if($cat=='proximos'){ echo 'class="active"'; } ?>>Próximas</a></dd>                                
-                <dd><a href="<?=$base_url_page.'/salas/historial' ?>"<? if($cat=='historial'){ echo 'class="active"'; } ?>>Historial</a></dd> 
-                <? if($cat=='participantes'): ?>    
+                <dd><a href="<?php echo $base_url_page.'/salas/hoy' ?>"<?php if($cat=='hoy'){ echo 'class="active"'; } ?>>Hoy</a></dd>
+                <dd><a href="<?php echo $base_url_page.'/salas/proximos' ?>"<?php if($cat=='proximos'){ echo 'class="active"'; } ?>>Próximas</a></dd>                                
+                <dd><a href="<?php echo $base_url_page.'/salas/historial' ?>"<?php if($cat=='historial'){ echo 'class="active"'; } ?>>Historial</a></dd> 
+                <?php if($cat=='participantes'): ?>    
                 <dd><a class="active">Participantes</a></dd>
-                <? endif; ?>
-                <? if($cat=='invitaciones'): ?>    
+                <?php endif; ?>
+                <?php if($cat=='invitaciones'): ?>    
                 <dd><a class="active">Invitaciones</a></dd>
-                <? endif; ?>                
-                <? if($cat=='view'): ?>    
-                <dd><a class="active">Detalles Sala #<?=$class_id ?></a></dd>
-                <? endif; ?>                
+                <?php endif; ?>                
+                <?php if($cat=='view'): ?>    
+                <dd><a class="active">Detalles Sala #<?php echo $class_id ?></a></dd>
+                <?php endif; ?>                
             </dl>
     
-            <? include $cat.'.php' ?>
+            <?php include $cat.'.php' ?>
     </div>
 </div>
 
@@ -89,9 +89,9 @@ function CancelarClase(id){
 <!-- REVEAL BOXES-->
 <div id="cancelBox" class="reveal-modal">
      <h4 id="tituloH4"></h4>
-     <p align="right"><img src="<?=$path ?>images/cargando_2.gif" id="loader" /></p>
+     <p align="right"><img src="<?php echo $path ?>images/cargando_2.gif" id="loader" /></p>
      <a id="btn_reveal_cerrar" class="close-reveal-modal">Cerrar</a>
-     <a class="nice small radius blue button" id="btnAceptar" href="<?=current_url() ?>">Aceptar</a>
+     <a class="nice small radius blue button" id="btnAceptar" href="<?php echo current_url() ?>">Aceptar</a>
 </div>
 
 <div id="cancelConfirm" class="reveal-modal">

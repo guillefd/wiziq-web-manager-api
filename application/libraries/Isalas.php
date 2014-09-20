@@ -38,8 +38,8 @@ class Isalas
         #for teacher account pass parameter 'presenter_email'
         $requestParameters["presenter_email"] = $presenter_email;
         #for room based account pass parameters 'presenter_id', 'presenter_name'
-        $requestParameters["presenter_id"] = "";
-        $requestParameters["presenter_name"] = "";  
+        $requestParameters["presenter_id"] = $_SESSION['isalas_user_id'];
+        $requestParameters["presenter_name"] = $_SESSION['isalas_name'];  
         $requestParameters["start_time"] = $CI->input->post('fecha').' '.$CI->input->post('horario');
         $requestParameters["title"]=$CI->input->post('titulo'); //Required
         $requestParameters["duration"]=formatoHora_a_minutos($CI->input->post('duracion')); //optional
@@ -104,7 +104,8 @@ class Isalas
         else
             {
                 $responseItem['status'] = 'fail';        
-                $responseItem['errormsg'] = 'XML empty';             
+                //$responseItem['errormsg'] = 'XML empty';             
+                $responseItem['errormsg'] = 'Error de comunicación con el servidor, si persiste por favor comúniques con soporte técnico (support@isalas.com.ar)';  
             }            
         $responseItem['timestamp'] = date('Y-m-d H:i:s');                    
         $data['responseItem'] = $responseItem; 
@@ -294,27 +295,30 @@ class Isalas
     }   
 
     public function wiziq_do_post_request($url, $data, $optional_headers = null)
-    {  
+    {     
         $params = array('http' => array(
                                   'method' => 'POST',
-                                  'content' => $data
+                                  'content' => $data,
+                                  'header' => "Content-type: application/x-www-form-urlencoded\r\n" .
+                                              "Content-Length: " . strlen ( $data ) . "\r\n"                                  
                            ));
         if ($optional_headers !== null) 
         {
                 $params['http']['header'] = $optional_headers;
         }
-        $ctx = stream_context_create($params);
+        $ctx = stream_context_create($params);         
         $fp = @fopen($url, 'rb', false, $ctx);
         if (!$fp) 
         {
-            throw new Exception("Problem with $url, $php_errormsg");
+            //throw new Exception("Problem with $url, $php_errormsg");
+            log_message('error','Problem with $url');
         }
         $response = @stream_get_contents($fp);
         if ($response === false) 
         {
-                throw new Exception("Problem reading data from $url, $php_errormsg");
+                //throw new Exception("Problem reading data from $url, $php_errormsg");
+                log_message('error','Problem reading data from $url');
         }
-
          return $response;
     }
 

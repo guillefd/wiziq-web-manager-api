@@ -8,32 +8,32 @@
             <div class="five columns centered">
                 <div class="panel">
                     <h4 class="subheader">Ingresar a la Sala Virtual</h4>
-        <? $form_attributes = array('class'=>'nice custom', 'id'=>'form-login') ?>                    
-        <?=form_open('room/validar/'.$class_id,$form_attributes) ?>
+        <?php $form_attributes = array('class'=>'nice custom', 'id'=>'form-login') ?>                    
+        <?php echo form_open('room/validar/'.$class_id,$form_attributes) ?>
 
-        <? $data = array('name'=>'email','id'=>'email','class'=>'small input-text','value'=>set_value('titulo'),'placeholder'=>'Email'); ?>
+        <?php $data = array('name'=>'email','id'=>'email','class'=>'small input-text','value'=>set_value('titulo'),'placeholder'=>'Email'); ?>
         <label>Email</label>
-        <?= form_input($data) ?> 
-        <? $data = array('name'=>'clave','id'=>'password','class'=>'small input-text','value'=>set_value('titulo'),'type'=>'password','placeholder'=>'Clave'); ?>
+        <?php echo form_input($data) ?> 
+        <?php $data = array('name'=>'clave','id'=>'password','class'=>'small input-text','value'=>set_value('titulo'),'type'=>'password','placeholder'=>'Clave'); ?>
         <label>Clave</label>
-        <?= form_input($data) ?>
+        <?php echo form_input($data) ?>
 
         <input type="submit" id="boton_submit" class="nice medium radius blue button" value="INGRESAR" >                      
 
-        <? form_close() ?>
+        <?php form_close() ?>
                     
                 </div>			
             </div>
     </div>
     <div class="row">
         <div class="five columns centered"> 
-            <?=validation_errors() ?>
-            <? if(isset($_SESSION['login_msg']) && $_SESSION['login_msg']): ?>
+            <?php echo validation_errors() ?>
+            <?php if(isset($_SESSION['login_msg']) && $_SESSION['login_msg']): ?>
                 <div class="alert-box warning">
-                    <?=$_SESSION['login_msg']; 
+                    <?php echo $_SESSION['login_msg']; 
                        unset($_SESSION['login_msg']); ?>
                 </div>
-            <? endif ?>
+            <?php endif ?>
         </div>
     </div>    
 

@@ -49,9 +49,9 @@ $active_group = 'isalas';
 $active_record = TRUE;
 
 $db['isalas']['hostname'] = 'localhost';
-$db['isalas']['username'] = 'isalasco_isalas';
-$db['isalas']['password'] = 'Qo?TqXRQtWGT';
-$db['isalas']['database'] = 'isalasco_meeting';
+$db['isalas']['username'] = 'eytechco_isalas';
+$db['isalas']['password'] = '(@bi(bUrM9dU';
+$db['isalas']['database'] = 'eytechco_isalas';
 $db['isalas']['dbdriver'] = 'mysql';
 $db['isalas']['dbprefix'] = '';
 $db['isalas']['pconnect'] = TRUE;

@@ -109,7 +109,7 @@ class Admin extends CI_Controller {
      * Index Page for this controller.
      */
     public function agendar()
-    {
+    {      
         $this->load->model('login_model');
         $creditos = $this->_get_creditos_disponibles();
         if($creditos>=1)
@@ -208,6 +208,7 @@ class Admin extends CI_Controller {
 
     public function editar_sala_ajax()
     {
+        $result = new stdClass();
         $this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('<div class="alert-box warning">', '</div>');        
         $this->_init_form_agendaredit_validation();
@@ -234,6 +235,7 @@ class Admin extends CI_Controller {
 
     public function crear_sala_ajax()
     {
+        $result = new stdClass();
         $this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('<div class="alert-box warning">', '</div>');        
         $this->_init_form_agendar_validation();
@@ -286,7 +288,7 @@ class Admin extends CI_Controller {
     
   public function cancelar_sala_ajax()
     {
-        
+        $result = new stdClass();
         if (!isset($_REQUEST['idSala']))
         {
             $errors = 'Identificador de sala inválido, vuelva a intentarlo por favor.';

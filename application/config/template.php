@@ -21,8 +21,8 @@ $config['tpl_by_link'] = 'http://www.eventosytecnologia.com.ar';
 $config['tpl_css'] = array('globals','typography','grid','ui','forms','orbit','reveal','app','mobile');
 $config['tpl_custom_css'] = array('presentation','jquery.ui.all','jquery-ui-1.8.16.custom');
 $config['tpl_js'] = array('jquery.min','jquery.reveal','jquery.orbit-1.3.0','forms.jquery','jquery.customforms','jquery.placeholder.min','app');
-$config['tpl_custom_js'] = array('jswipe','swipe','github','jquery-ui-1.8.16.custom.min','jquery.ui.core','jquery.ui.widget','jquery.ui.datepicker','jquery.ui.datepicker-es','jquery-ui-timepicker-addon');
-
+//$config['tpl_custom_js'] = array('jswipe','swipe','github','jquery-ui-1.8.16.custom.min','jquery.ui.core','jquery.ui.widget','jquery.ui.datepicker','jquery.ui.datepicker-es','jquery-ui-timepicker-addon');
+$config['tpl_custom_js'] = array('jswipe','swipe','jquery-ui-1.8.16.custom.min','jquery.ui.core','jquery.ui.widget','jquery.ui.datepicker','jquery.ui.datepicker-es','jquery-ui-timepicker-addon');
 // MENU
 $config['tpl_menu_path'] = '';
 $config['tpl_menu_css'] = array();

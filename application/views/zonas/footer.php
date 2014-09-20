@@ -3,7 +3,7 @@
 	    <section class="five columns">
 	      <h6><strong>iSalas</strong></h6>
         <p>Salas Virtuales para conferencia Web<br>      
-        <?=date('Y') ?> :: Powered by <a href="http://www.eytmedia.com/">E&T Media</a></p>
+        <?php echo date('Y') ?> :: Powered by <a href="http://www.eytmedia.com/">E&T Media</a></p>
 	    </section>
 	    
 	    <section class="three columns">

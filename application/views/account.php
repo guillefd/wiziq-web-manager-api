@@ -1,10 +1,10 @@
- <? if(isset($_SESSION['sys_msg_ok']) && $_SESSION['sys_msg_ok']): ?>
+ <?php if(isset($_SESSION['sys_msg_ok']) && $_SESSION['sys_msg_ok']): ?>
 <br>
     <div class="alert-box success">
-        <?=$_SESSION['sys_msg_ok']; 
+        <?php echo $_SESSION['sys_msg_ok']; 
            unset($_SESSION['sys_msg_ok']); ?>
     </div>
-<? endif ?> 
+<?php endif ?> 
 <br>
 <div class="row">
     <div class="six columns"> 
@@ -14,42 +14,42 @@
                 <tbody>
                     <tr>
                         <td><strong><strong>Usuario</strong></td>                        
-                        <td><?=$account->nombreusuario ?></td>
+                        <td><?php echo $account->nombreusuario ?></td>
                         <td><strong>Nombre</strong></td>                        
-                        <td><?=$account->nombre.' '.$account->apellido ?></td>                                           
+                        <td><?php echo $account->nombre.' '.$account->apellido ?></td>                                           
                     </tr>
                     <tr>
                         <td><strong>Email</strong></td>
-                        <td><?=$account->email ?></td>
+                        <td><?php echo $account->email ?></td>
                         <td><strong>Ubicación</strong></td>                        
-                        <td><?=$account->ciudad.', '.$account->pais; ?></td>                                                
+                        <td><?php echo $account->ciudad.', '.$account->pais; ?></td>                                                
                     </tr>                                       
                     <tr>
                         <td><strong>Fecha alta</strong></strong></td>
-                        <td><?=$account->fecha_alta ?></td>
+                        <td><?php echo $account->fecha_alta ?></td>
                         <td><strong>Fecha validez</strong></td>
-                        <td><?=$account->fecha_validez; ?></td>                                                
+                        <td><?php echo $account->fecha_validez; ?></td>                                                
                     </tr>                  
                 </tbody>
             </table>  
             <table>
                 <thead>
                     <tr>
-                        <th colspan="2">Créditos | <a href="<?=$base_url_page.'/salas/historial' ?>">Ver historial</a></th>
+                        <th colspan="2">Créditos | <a href="<?php echo $base_url_page.'/salas/historial' ?>">Ver historial</a></th>
                     </tr>                
                 </thead>                
                 <tbody>
                     <tr>
                         <td>Totales</td>
-                        <td><?=$account->creditos ?></td>
+                        <td><?php echo $account->creditos ?></td>
                     </tr>                         
                     <tr>
                         <td>Utilizados</td>
-                        <td><?= count($account->salas_agendadas); ?></td>    
+                        <td><?php echo  count($account->salas_agendadas); ?></td>    
                     </tr> 
                     <tr>
                         <td>Disponibles</td>
-                        <td><?=($account->creditos) - (count($account->salas_agendadas)); ?></td>                                                                    
+                        <td><?php echo ($account->creditos) - (count($account->salas_agendadas)); ?></td>                                                                    
                     </tr>                  
                 </tbody>
             </table>                       
@@ -59,7 +59,7 @@
 
         
 
-<?php
+<?phpphp
 
 /* End of file XXX.php */
 /* Location: ./application/controllers/XXX.php */

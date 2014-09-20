@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title><?=$row->titulo ?></title>
+<title><?php echo $row->titulo ?></title>
 <style type="text/css">
 iframe
 {
@@ -15,11 +15,11 @@ z-index:-1;
 
 </head>
 <body>
-<iframe src="<?=$row->presenter_url ?>" allowtransparency="yes" wmode="transparent" width="100%" height="620px" frameborder="0" scrolling="no">
+<iframe src="<?php echo $row->presenter_url ?>" allowtransparency="yes" wmode="transparent" width="100%" height="620px" frameborder="0" scrolling="no">
   <p>Your browser does not support iframes.</p>
 </iframe>
 <div align="center" style="position:fixed;top:620px;left:0px;z-index:10000;width:100%;height:100px;background-color:#CCC">
-    <img src="<?=base_url() ?>template/foundation/images/logoclass.png" style="margin-top:5px" /><span style="position:absolute;top:5px; padding:4px;font-family:Tahoma, Geneva, sans-serif;color:#666; font-size:0.8em;"> iSalas :: Powered by EyT :: 2013 </span>
+    <img src="<?php echo base_url() ?>template/foundation/images/logoclass.png" style="margin-top:5px" /><span style="position:absolute;top:5px; padding:4px;font-family:Tahoma, Geneva, sans-serif;color:#666; font-size:0.8em;"> iSalas :: Powered by EyT :: 2013 </span>
 </div>
 </body>
 

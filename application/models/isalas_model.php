@@ -50,7 +50,7 @@ class Isalas_model extends CI_model
            'return_url'=>$request['return_url'],  
            'status_ping_url'=>$request['status_ping_url'],
            'language_culture_name'=>$request['language_culture_name'],
-           'descripcion'=>$request['CKdescripcion'],       
+           //'descripcion'=>$request['CKdescripcion'],       
            'attendee_list'=>$request['attendee_list'],            
 //           'session_id' => $this->session->userdata('session_id'),
 //           'session_ip_address' => $this->session->userdata('ip_address'),

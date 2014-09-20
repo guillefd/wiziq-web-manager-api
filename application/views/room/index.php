@@ -11,29 +11,29 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th colspan="2"><h5><?=$infoSala->titulo ?></h5></th>                    
+                                        <th colspan="2"><h5><?php echo $infoSala->titulo ?></h5></th>                    
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td width="25%">ID #</td>
-                                        <td><?=$infoSala->class_id ?></td>
+                                        <td><?php echo $infoSala->class_id ?></td>
                                     </tr>                  
                                     <tr>
                                         <td width="25%">Descripcion</td>
-                                        <td><?=$infoSala->descripcion ?></td>
+                                        <td><?php echo $infoSala->descripcion ?></td>
                                     </tr>                        
                                     <tr>
                                         <td>Fecha</td>
-                                        <td><?=$infoSala->fecha ?></td>              
+                                        <td><?php echo $infoSala->fecha ?></td>              
                                     </tr>
                                     <tr>
                                         <td>Horario</td>
-                                        <td><?=substr($infoSala->horario,0,5) ?> hs</td>                  
+                                        <td><?php echo substr($infoSala->horario,0,5) ?> hs</td>                  
                                     </tr>                                
                                     <tr>
                                         <td>Duracion</td>
-                                        <td><?=$infoSala->duracion ?> minutos</td>                  
+                                        <td><?php echo $infoSala->duracion ?> minutos</td>                  
                                     </tr>                
                                 </tbody>    
                             </table>
@@ -50,7 +50,7 @@
                             <p>
                                <div align="center"><a href="http://meeting.isalas.com.ar/check/" target="_blank" class="nice small white radius button">Ver la Guía de Resolución de Problemas</a></div>
                             </p>                            
-                    <div align="center"><a href="<?=base_url().'room/participar/'.$infoSala->class_id ?>" target="_blank" class="nice large radius blue button">Ingresar a la Sala Virtual</a></div>
+                    <div align="center"><a href="<?php echo base_url().'room/participar/'.$infoSala->class_id ?>" target="_blank" class="nice large radius blue button">Ingresar a la Sala Virtual</a></div>
                     &nbsp;                                        
                 </div>			
             </div>

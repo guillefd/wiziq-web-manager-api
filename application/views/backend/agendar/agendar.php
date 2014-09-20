@@ -7,7 +7,7 @@
 <div class="row show-on-desktops">
     <div class="eight columns">
         <div class="panel">        
-        <? include 'form-clase.php' ?>
+        <?php include 'form-clase.php'; ?>
         </div>    
     </div>
 <!--    <div class="four columns">

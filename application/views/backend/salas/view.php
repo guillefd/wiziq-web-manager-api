@@ -1,4 +1,4 @@
-<? include 'tabla_salas.php' ?>
+<?php include 'tabla_salas.php'; ?>
 
 
 
